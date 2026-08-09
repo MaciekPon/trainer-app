@@ -45,8 +45,8 @@ const onSubmit = handleSubmit(async (values) => {
   <div class="flex min-h-svh items-center justify-center bg-muted/30 p-4">
     <Card class="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Logowanie trenera</CardTitle>
-        <CardDescription>Zaloguj się do panelu trenera</CardDescription>
+        <CardTitle>Logowanie</CardTitle>
+        <CardDescription>Zaloguj się do swojego konta</CardDescription>
       </CardHeader>
       <CardContent>
         <form class="flex flex-col gap-4" @submit="onSubmit">
