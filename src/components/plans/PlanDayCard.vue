@@ -74,7 +74,7 @@ async function handleDeleteDay() {
   <Card>
     <CardHeader class="flex flex-row items-center justify-between">
       <CardTitle>{{ day.name }}</CardTitle>
-      <Button variant="ghost" size="sm" @click="handleDeleteDay">Usuń dzień</Button>
+      <Button variant="destructive" size="sm" @click="handleDeleteDay">Usuń dzień</Button>
     </CardHeader>
     <CardContent class="flex flex-col gap-4">
       <Table>
@@ -98,7 +98,7 @@ async function handleDeleteDay() {
             <TableCell>{{ exercise.target_reps }}</TableCell>
             <TableCell class="text-muted-foreground">{{ exercise.notes ?? '—' }}</TableCell>
             <TableCell class="text-right">
-              <Button variant="ghost" size="sm" @click="handleDeleteExercise(exercise.id)">Usuń</Button>
+              <Button variant="destructive" size="sm" @click="handleDeleteExercise(exercise.id)">Usuń</Button>
             </TableCell>
           </TableRow>
         </TableBody>

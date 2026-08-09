@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { MoonIcon, SunIcon } from '@lucide/vue'
 import { useAuthStore } from '@/stores/auth'
+import { useTheme } from '@/composables/useTheme'
 import { Button } from '@/components/ui/button'
 
 const auth = useAuthStore()
 const router = useRouter()
+const { theme, toggleTheme } = useTheme()
 
 async function handleSignOut() {
   await auth.signOut()
@@ -19,6 +22,15 @@ async function handleSignOut() {
         <RouterLink to="/dashboard" class="font-semibold">Trainer App</RouterLink>
         <div class="flex items-center gap-3 text-sm text-muted-foreground">
           <span v-if="auth.profile">{{ auth.profile.full_name }}</span>
+          <Button
+            variant="outline"
+            size="icon-sm"
+            :aria-label="theme === 'dark' ? 'Włącz jasny motyw' : 'Włącz ciemny motyw'"
+            @click="toggleTheme"
+          >
+            <SunIcon v-if="theme === 'dark'" />
+            <MoonIcon v-else />
+          </Button>
           <Button variant="outline" size="sm" @click="handleSignOut">Wyloguj</Button>
         </div>
       </div>

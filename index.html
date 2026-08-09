@@ -2,6 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Ustawiamy klasę .dark przed pierwszym malowaniem strony, żeby uniknąć
+      // mignięcia jasnym motywem przy starcie (ciemny/jasny wybierany jest
+      // w src/composables/useTheme.ts).
+      ;(function () {
+        var stored = localStorage.getItem('trainer-app-theme')
+        var isDark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches
+        document.documentElement.classList.toggle('dark', isDark)
+      })()
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trainer App</title>
