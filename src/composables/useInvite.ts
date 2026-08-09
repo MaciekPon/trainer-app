@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/vue-query'
 import { supabase } from '@/lib/supabase'
+import router from '@/router'
 
 export function useGenerateInviteLink() {
   return useMutation({
@@ -12,9 +13,9 @@ export function useGenerateInviteLink() {
 
       if (error) throw error
 
-      const url = new URL('/accept-invite', window.location.origin)
-      url.searchParams.set('token', data.token)
-      return url.toString()
+      // router.resolve uwzględnia base path (np. /trainer-app/ na GitHub Pages)
+      const path = router.resolve({ name: 'accept-invite', query: { token: data.token } }).href
+      return new URL(path, window.location.origin).toString()
     },
   })
 }
